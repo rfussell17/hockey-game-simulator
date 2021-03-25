@@ -59,6 +59,21 @@
 
   const homeStatHeader = document.getElementById("home-stat-header");
   const awayStatHeader = document.getElementById("away-stat-header");
+  const btn = document.getElementById("btn");
+  
+  btn.addEventListener("click", () =>{
+    clearData();
+    simulate()
+  })
+
+  function clearData(){
+    homeShotsTotal.innerHTML = 0;
+    homeHitsTotalValue = 0;
+    homeGoalsTotalValue = 0;
+    awayShotsTotalValue = 0;
+    awayHitsTotalValue = 0;
+    awayGoalsTotalValue = 0;
+  }
 
   //shot logic
 
@@ -288,6 +303,4 @@
     setTimeout(displayThirdPeriod, 4000);
     setTimeout(displayTotals, 4000);
   }
-
-  simulate();
 })();

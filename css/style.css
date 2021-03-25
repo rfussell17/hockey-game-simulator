@@ -96,7 +96,7 @@ td {
   background-color: #fff;
 }
 
-.btn {
+#btn {
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
@@ -110,8 +110,8 @@ td {
   transition: all 0.2s ease-in-out;
 }
 
-.btn:hover,
-.btn:focus {
+#btn:hover,
+#btn:focus {
   transform: scale(1.02);
   background-color: #4caf52;
 }
