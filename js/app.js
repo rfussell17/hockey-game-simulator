@@ -19,6 +19,8 @@
 //shots html
 
 (function () {
+  //variables
+
   const homeP1Shots = document.getElementById("home-p1-shots");
   const homeP2Shots = document.getElementById("home-p2-shots");
   const homeP3Shots = document.getElementById("home-p3-shots");
@@ -60,22 +62,8 @@
   const homeStatHeader = document.getElementById("home-stat-header");
   const awayStatHeader = document.getElementById("away-stat-header");
   const btn = document.getElementById("btn");
-  
-  btn.addEventListener("click", () =>{
-    clearData();
-    simulate()
-  })
 
-  function clearData(){
-    homeShotsTotal.innerHTML = 0;
-    homeHitsTotalValue = 0;
-    homeGoalsTotalValue = 0;
-    awayShotsTotalValue = 0;
-    awayHitsTotalValue = 0;
-    awayGoalsTotalValue = 0;
-  }
 
-  //shot logic
 
   let shotOptions = [
     [1, 2, 3, 4, 5],
@@ -90,16 +78,8 @@
     [12, 13, 14, 15, 16],
   ];
 
-  function getShots() {
-    let shots =
-      shotOptions[Math.floor(Math.random() * 9)][Math.floor(Math.random() * 4)];
-    return shots;
-  }
-
-  //hit logic
-
   let hitOptions = [
-    [0, 2, 3, 4, 5],
+    [2, 2, 3, 4, 5],
     [5, 7, 8, 9, 10],
     [5, 7, 8, 9, 10],
     [0, 7, 8, 9, 10],
@@ -111,14 +91,6 @@
     [12, 13, 14, 15, 16],
   ];
 
-  function getHits() {
-    let hits =
-      hitOptions[Math.floor(Math.random() * 9)][Math.floor(Math.random() * 4)];
-    return hits;
-  }
-
-  // goal logic
-
   let goalOptions = [
     [0, 0, 0, 1, 1],
     [0, 0, 0, 5, 1],
@@ -126,41 +98,85 @@
     [0, 0, 1, 2, 0],
     [1, 2, 0, 2, 1],
     [1, 2, 2, 2, 0],
-    [1, 2, 5, 2, 3],
+    [1, 2, 4, 2, 3],
     [0, 4, 2, 3, 4],
     [1, 2, 1, 2, 3],
     [1, 2, 1, 2, 3],
   ];
 
+  //sim calculations
+
+  function returnRow() {
+    return Math.floor(Math.random() * 9);
+  }
+
+  function returnCol() {
+    return Math.floor(Math.random() * 4);
+  }
+
+  function getShots() {
+    let shots = shotOptions[returnRow()][returnCol()];
+    return shots;
+  }
+
+  function getHits() {
+    let hits = hitOptions[returnRow()][returnCol()];
+    return hits;
+  }
+
   function getGoals() {
-    let goals =
-      goalOptions[Math.floor(Math.random() * 9)][Math.floor(Math.random() * 4)];
+    let goals = goalOptions[returnRow()][returnCol()];
     return goals;
   }
 
-  //display period logic
+  function sum(input) {
+    if (toString.call(input) !== "[object Array]") return false;
 
-  function displayFirstPeriod() {
-    let homeP1ShotsValue = getShots();
+    var total = 0;
+    for (var i = 0; i < input.length; i++) {
+      if (isNaN(input[i])) {
+        continue;
+      }
+      total += Number(input[i]);
+    }
+    return total;
+  }
+
+  
+  let homeShotsArr = [];
+  let awayShotsArr = [];
+
+  let homeHitsArr = [];
+  let awayHitsArr = [];
+
+  let homeGoalsArr = [];
+  let awayGoalsArr = [];
+
+  //render period logic
+
+  function renderFirstPeriod() {
+
+    //calc first period
+
+    homeP1ShotsValue = getShots();
     homeShotsArr.push(homeP1ShotsValue);
-    homeP1Shots.innerHTML = homeP1ShotsValue;
-    let awayP1ShotsValue = getShots();
+
+    awayP1ShotsValue = getShots();
     awayShotsArr.push(awayP1ShotsValue);
-    awayP1Shots.innerHTML = awayP1ShotsValue;
 
-    let homeP1HitsValue = getHits();
+    homeP1HitsValue = getHits();
     homeHitsArr.push(homeP1HitsValue);
-    homeP1Hits.innerHTML = homeP1HitsValue;
-    let awayP1HitsValue = getHits();
-    awayHitsArr.push(awayP1HitsValue);
-    awayP1Hits.innerHTML = awayP1HitsValue;
 
-    let homeP1GoalsValue = getGoals();
-    let awayP1GoalsValue = getGoals();
+    awayP1HitsValue = getHits();
+    awayHitsArr.push(awayP1HitsValue);
+
+    homeP1GoalsValue = getGoals();
+    awayP1GoalsValue = getGoals();
+
+    //goal logic
 
     if (homeP1ShotsValue < homeP1GoalsValue) {
-      homeP1ShotsValue++;
-      homeP1Goals.innerHTML = homeP1GoalsValue;
+      homeP1ShotsValue = homeP1ShotsValue + 4;
       homeGoalsArr.push(homeP1GoalsValue);
     } else {
       homeGoalsArr.push(homeP1GoalsValue);
@@ -168,13 +184,20 @@
     }
 
     if (awayP1ShotsValue < awayP1GoalsValue) {
-      awayP1ShotsValue++;
+      awayP1ShotsValue = awayP1ShotsValue + 4;
       awayGoalsArr.push(awayP1GoalsValue);
-      awayP1Goals.innerHTML = awayP1GoalsValue;
+    
     } else {
       awayGoalsArr.push(awayP1GoalsValue);
       awayP1Goals.innerHTML = awayP1GoalsValue;
     }
+
+    //display stats
+    
+    homeP1Shots.innerHTML = homeP1ShotsValue;
+    awayP1Shots.innerHTML = awayP1ShotsValue;
+    homeP1Hits.innerHTML = homeP1HitsValue;
+    awayP1Hits.innerHTML = awayP1HitsValue;
   }
 
   function displaySecondPeriod() {
@@ -251,30 +274,6 @@
     }
   }
 
-  //totals logic
-
-  let homeShotsArr = [];
-  let awayShotsArr = [];
-
-  let homeHitsArr = [];
-  let awayHitsArr = [];
-
-  let homeGoalsArr = [];
-  let awayGoalsArr = [];
-
-  function sum(input) {
-    if (toString.call(input) !== "[object Array]") return false;
-
-    var total = 0;
-    for (var i = 0; i < input.length; i++) {
-      if (isNaN(input[i])) {
-        continue;
-      }
-      total += Number(input[i]);
-    }
-    return total;
-  }
-
   function displayTotals() {
     let homeShotsTotalValue = sum(homeShotsArr);
     homeShotsTotal.innerHTML = homeShotsTotalValue;
@@ -298,9 +297,44 @@
   //simulation function
 
   function simulate() {
-    displayFirstPeriod();
+    renderFirstPeriod();
     setTimeout(displaySecondPeriod, 2000);
     setTimeout(displayThirdPeriod, 4000);
     setTimeout(displayTotals, 4000);
   }
+
+  function clearData() {
+    homeP1Shots.innerHTML = 0;
+    homeP1Hits.innerHTML = 0;
+    homeGoalsTotal.innerHTML = 0;
+    awayShotsTotal.innerHTML = 0;
+    awayHitsTotal.innerHTML = 0;
+    awayGoalsTotal.innerHTML = 0;
+
+    homeP2Shots.innerHTML = 0;
+    homeP2Hits.innerHTML = 0;
+    homeGoalsTotal.innerHTML = 0;
+    awayShotsTotal.innerHTML = 0;
+    awayHitsTotal.innerHTML = 0;
+    awayGoalsTotal.innerHTML = 0;
+
+    homeP3Shots.innerHTML = 0;
+    homeP3Hits.innerHTML = 0;
+    homeGoalsTotal.innerHTML = 0;
+    awayShotsTotal.innerHTML = 0;
+    awayHitsTotal.innerHTML = 0;
+    awayGoalsTotal.innerHTML = 0;
+
+    homeShotsTotal.innerHTML = 0;
+    homeHitsTotal.innerHTML = 0;
+    homeGoalsTotal.innerHTML = 0;
+    awayShotsTotal.innerHTML = 0;
+    awayHitsTotal.innerHTML = 0;
+    awayGoalsTotal.innerHTML = 0;
+  }
+
+  btn.addEventListener("click", () => {
+    clearData();
+    simulate();
+  });
 })();

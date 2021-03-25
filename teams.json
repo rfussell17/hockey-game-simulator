@@ -42,7 +42,8 @@
     },
     {
         "name": "Wild",
-        "city": "Minnesota"
+        "city": "Minnesota",
+        "logo": "https://content.sportslogos.net/logos/1/15/full/8810_minnesota_wild-primary-2014.png"
     },
     {
         "name": "Predators",
@@ -62,7 +63,8 @@
     },
     {
         "name": "Sabres",
-        "city": "Buffalo"
+        "city": "Buffalo",
+        "logo": "https://content.sportslogos.net/logos/1/4/full/5493_buffalo_sabres-primary-2021.png"
     },
     {
         "name": "Red Wings",
@@ -70,7 +72,8 @@
     },
     {
         "name": "Panthers",
-        "city": "Florida"
+        "city": "Florida",
+        "logo": "https://content.sportslogos.net/logos/1/13/full/8078_florida_panthers-primary-2017.png"
     },
     {
         "name": "Canadiens",
