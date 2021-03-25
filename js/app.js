@@ -63,8 +63,6 @@
   const awayStatHeader = document.getElementById("away-stat-header");
   const btn = document.getElementById("btn");
 
-
-
   let shotOptions = [
     [1, 2, 3, 4, 5],
     [5, 7, 8, 9, 10],
@@ -142,7 +140,6 @@
     return total;
   }
 
-  
   let homeShotsArr = [];
   let awayShotsArr = [];
 
@@ -155,7 +152,6 @@
   //render period logic
 
   function renderFirstPeriod() {
-
     //calc first period
 
     homeP1ShotsValue = getShots();
@@ -186,14 +182,13 @@
     if (awayP1ShotsValue < awayP1GoalsValue) {
       awayP1ShotsValue = awayP1ShotsValue + 4;
       awayGoalsArr.push(awayP1GoalsValue);
-    
     } else {
       awayGoalsArr.push(awayP1GoalsValue);
       awayP1Goals.innerHTML = awayP1GoalsValue;
     }
 
     //display stats
-    
+
     homeP1Shots.innerHTML = homeP1ShotsValue;
     awayP1Shots.innerHTML = awayP1ShotsValue;
     homeP1Hits.innerHTML = homeP1HitsValue;
@@ -203,17 +198,15 @@
   function displaySecondPeriod() {
     let homeP2ShotsValue = getShots();
     homeShotsArr.push(homeP2ShotsValue);
-    homeP2Shots.innerHTML = homeP2ShotsValue;
+
     let awayP2ShotsValue = getShots();
     awayShotsArr.push(awayP2ShotsValue);
-    awayP2Shots.innerHTML = awayP2ShotsValue;
 
     let homeP2HitsValue = getHits();
     homeHitsArr.push(homeP2HitsValue);
-    homeP2Hits.innerHTML = homeP2HitsValue;
+
     let awayP2HitsValue = getHits();
     awayHitsArr.push(awayP2HitsValue);
-    awayP2Hits.innerHTML = awayP2HitsValue;
 
     let homeP2GoalsValue = getGoals();
     let awayP2GoalsValue = getGoals();
@@ -235,22 +228,25 @@
       awayGoalsArr.push(awayP2GoalsValue);
       awayP2Goals.innerHTML = awayP2GoalsValue;
     }
+
+    homeP2Shots.innerHTML = homeP2ShotsValue;
+    awayP2Shots.innerHTML = awayP2ShotsValue;
+    homeP2Hits.innerHTML = homeP2HitsValue;
+    awayP2Hits.innerHTML = awayP2HitsValue;
   }
 
   function displayThirdPeriod() {
     let homeP3ShotsValue = getShots();
     homeShotsArr.push(homeP3ShotsValue);
-    homeP3Shots.innerHTML = homeP3ShotsValue;
+
     let awayP3ShotsValue = getShots();
     awayShotsArr.push(awayP3ShotsValue);
-    awayP3Shots.innerHTML = awayP3ShotsValue;
 
     let homeP3HitsValue = getHits();
     homeHitsArr.push(homeP3HitsValue);
-    homeP3Hits.innerHTML = homeP3HitsValue;
+
     let awayP3HitsValue = getHits();
     awayHitsArr.push(awayP3HitsValue);
-    awayP3Hits.innerHTML = awayP3HitsValue;
 
     let homeP3GoalsValue = getGoals();
     let awayP3GoalsValue = getGoals();
@@ -272,10 +268,15 @@
       awayGoalsArr.push(awayP3GoalsValue);
       awayP3Goals.innerHTML = awayP3GoalsValue;
     }
+
+    homeP3Shots.innerHTML = homeP3ShotsValue;
+    awayP3Shots.innerHTML = awayP3ShotsValue;
+    homeP3Hits.innerHTML = homeP3HitsValue;
+    awayP3Hits.innerHTML = awayP3HitsValue;
   }
 
   function displayTotals() {
-    let homeShotsTotalValue = sum(homeShotsArr);
+    homeShotsTotalValue = sum(homeShotsArr);
     homeShotsTotal.innerHTML = homeShotsTotalValue;
 
     let awayShotsTotalValue = sum(awayShotsArr);
@@ -297,37 +298,38 @@
   //simulation function
 
   function simulate() {
-    renderFirstPeriod();
-    setTimeout(displaySecondPeriod, 2000);
-    setTimeout(displayThirdPeriod, 4000);
-    setTimeout(displayTotals, 4000);
+    setTimeout(renderFirstPeriod, 1000);
+    setTimeout(displaySecondPeriod, 3000);
+    setTimeout(displayThirdPeriod, 5000);
+    setTimeout(displayTotals, 6000);
   }
 
   function clearData() {
     homeP1Shots.innerHTML = 0;
     homeP1Hits.innerHTML = 0;
-    homeGoalsTotal.innerHTML = 0;
-    awayShotsTotal.innerHTML = 0;
-    awayHitsTotal.innerHTML = 0;
-    awayGoalsTotal.innerHTML = 0;
-
+    homeP1Goals.innerHTML = 0;
     homeP2Shots.innerHTML = 0;
     homeP2Hits.innerHTML = 0;
-    homeGoalsTotal.innerHTML = 0;
-    awayShotsTotal.innerHTML = 0;
-    awayHitsTotal.innerHTML = 0;
-    awayGoalsTotal.innerHTML = 0;
-
+    homeP2Goals.innerHTML = 0;
     homeP3Shots.innerHTML = 0;
     homeP3Hits.innerHTML = 0;
-    homeGoalsTotal.innerHTML = 0;
-    awayShotsTotal.innerHTML = 0;
-    awayHitsTotal.innerHTML = 0;
-    awayGoalsTotal.innerHTML = 0;
+    homeP3Goals.innerHTML = 0;
 
     homeShotsTotal.innerHTML = 0;
     homeHitsTotal.innerHTML = 0;
     homeGoalsTotal.innerHTML = 0;
+
+    awayP1Shots.innerHTML = 0;
+    awayP1Hits.innerHTML = 0;
+    awayP1Goals.innerHTML = 0;
+    awayP2Shots.innerHTML = 0;
+    awayP2Hits.innerHTML = 0;
+    awayP2Goals.innerHTML = 0;
+    awayP3Shots.innerHTML = 0;
+    awayP3Hits.innerHTML = 0;
+    awayP3Goals.innerHTML = 0;
+    awayGoalsTotal.innerHTML = 0;
+    
     awayShotsTotal.innerHTML = 0;
     awayHitsTotal.innerHTML = 0;
     awayGoalsTotal.innerHTML = 0;
