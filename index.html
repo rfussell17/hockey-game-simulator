@@ -1,76 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Hockey Simulator</title>
-</head>
-<body>
-  <header>
-    <h1>Hockey Simulator</h1>
-  </header>
-  <h3>Home</h3>
-  <main>
-    <table>
-      <tr>
-        <th>Period 1</th>
-        <th>Period 2</th> 
-        <th>Period 3</th>
-        <th>Total</th>
-      </tr>
-      <tr>
-        <td>Shots:<span id="home-p1-shots"> </span></td>
-        <td>Shots: <span id="home-p2-shots"> </span></td>
-        <td>Shots: <span id="home-p3-shots"> </span></td>
-        <td>Shots: <span id="home-total-shots"> </span></td>
-      </tr>
-      <tr>
-        <td>Hits: <span id="home-p1-hits"> </span></td>
-        <td>Hits: <span id="home-p2-hits"> </span></td>
-        <td>Hits: <span id="home-p3-hits"> </span></td>
-        <td>Hits: <span id="home-total-hits"> </span></td>
-      </tr>
-      <tr>
-        <td>Goals: <span id="home-p1-goals"> </span></td>
-        <td>Goals: <span id="home-p2-goals"> </span></td>
-        <td>Goals: <span id="home-p3-goals"> </span></td>
-        <td>Goals: <span id="home-total-goals"> </span></td>
-      </tr>
-    </table>
-    <br>
-    
-    <h3>Away</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Hockey Simulator</title>
+  </head>
+  <body>
+    <header>
+      <h1>Hockey Simulator</h1>
+      <div class="container">
+        <div class="home">
+          <img
+            src="https://content.sportslogos.net/logos/1/29/full/2084_vancouver_canucks-primary-2020.png"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <h2 id="vs">VS</h2>
+        <div class="away">
+          <img
+            src="https://content.sportslogos.net/logos/1/12/full/2728_edmonton_oilers-primary-2018.png"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </div>
+    </header>
+    <h3 id="home-stat-header"></h3>
 
-    <table id="t01">
-      <tr>
-        <th>Period 1</th>
-        <th>Period 2</th> 
-        <th>Period 3</th>
-        <th>Total</th>
-      </tr>
-      <tr>
-        <td>Shots:<span id="away-p1-shots"> </span></td>
-        <td>Shots: <span id="away-p2-shots"> </span></td>
-        <td>Shots: <span id="away-p3-shots"> </span></td>
-        <td>Shots: <span id="away-total-shots"> </span></td>
-      </tr>
-      <tr>
-        <td>Hits: <span id="away-p1-hits"> </span></td>
-        <td>Hits: <span id="away-p2-hits"> </span></td>
-        <td>Hits: <span id="away-p3-hits"> </span></td>
-        <td>Hits: <span id="away-total-hits"> </span></td>
-      </tr>
-      <tr>
-        <td>Goals: <span id="away-p1-goals"> </span></td>
-        <td>Goals: <span id="away-p2-goals"> </span></td>
-        <td>Goals: <span id="away-p3-goals"> </span></td>
-        <td>Goals: <span id="away-total-goals"> </span></td>
-      </tr>
-    </table>
-  </main>
-  <footer></footer>
-  <script type="text/javascript" src="js/app.js"></script>
-</body>
+    <main>
+      <table>
+        <tr>
+          <th>Summary</th>
+          <th>Period 1</th>
+          <th>Period 2</th>
+          <th>Period 3</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td class="sum">Shots</td>
+          <td id="home-p1-shots"></td>
+          <td id="home-p2-shots"></td>
+          <td id="home-p3-shots"></td>
+          <td id="home-total-shots"></td>
+        </tr>
+        <tr>
+          <td class="sum">Hits</td>
+          <td id="home-p1-hits"></td>
+          <td id="home-p2-hits"></td>
+          <td id="home-p3-hits"></td>
+          <td id="home-total-hits"></td>
+        </tr>
+        <tr>
+          <td class="sum">Goals</td>
+          <td id="home-p1-goals"></td>
+          <td id="home-p2-goals"></td>
+          <td id="home-p3-goals"></td>
+          <td id="home-total-goals"></td>
+        </tr>
+      </table>
+      <br />
+
+      <h3 id="away-stat-header"></h3>
+      <table id="t01">
+        <tr>
+          <th>Summary</th>
+          <th>Period 1</th>
+          <th>Period 2</th>
+          <th>Period 3</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td class="sum">Shots</td>
+          <td id="away-p1-shots"></td>
+          <td id="away-p2-shots"></td>
+          <td id="away-p3-shots"></td>
+          <td id="away-total-shots"></td>
+        </tr>
+        <tr>
+          <td class="sum">Hits</td>
+          <td id="away-p1-hits"></td>
+          <td id="away-p2-hits"></td>
+          <td id="away-p3-hits"></td>
+          <td id="away-total-hits"></td>
+        </tr>
+        <tr>
+          <td class="sum">Goals</td>
+          <td id="away-p1-goals"></td>
+          <td id="away-p2-goals"></td>
+          <td id="away-p3-goals"></td>
+          <td id="away-total-goals"></td>
+        </tr>
+      </table>
+    </main>
+    <footer>
+      <button type="button" class="btn">SIM GAME</button>
+    </footer>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
 </html>
