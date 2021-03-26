@@ -46,67 +46,37 @@ const btn = document.getElementById("btn");
 
 //create getCity, getTeam, getAbr, getLogo functions
 
-let shotOptions = [
-  [1, 2, 3, 4, 5],
-  [5, 7, 8, 9, 10],
-  [1, 7, 8, 9, 10],
-  [5, 7, 3, 9, 10],
-  [7, 9, 10, 11, 12],
-  [3, 9, 5, 11, 12],
-  [7, 9, 10, 11, 12],
-  [4, 9, 10, 11, 12],
-  [10, 11, 12, 13, 14],
-  [12, 13, 14, 15, 16],
-];
-
-let hitOptions = [
-  [2, 2, 3, 4, 5],
-  [5, 7, 8, 9, 10],
-  [5, 7, 8, 9, 10],
-  [0, 7, 8, 9, 10],
-  [1, 2, 3, 4, 5],
-  [5, 7, 8, 9, 10],
-  [7, 9, 10, 11, 12],
-  [1, 2, 3, 4, 5],
-  [5, 7, 8, 9, 10],
-  [12, 13, 14, 15, 16],
-];
-
-let goalOptions = [
+let statValues = [
   [0, 0, 0, 1, 1],
-  [0, 0, 0, 5, 1],
-  [0, 3, 1, 1, 2],
-  [0, 0, 1, 2, 0],
-  [1, 2, 0, 2, 1],
-  [1, 2, 2, 2, 0],
-  [1, 2, 4, 2, 3],
-  [0, 4, 2, 3, 4],
-  [1, 2, 1, 2, 3],
-  [1, 2, 1, 2, 3],
+  [1, 1, 2, 2, 2],
+  [2, 3, 3, 3, 4],
+  [5, 5, 5, 5, 6],
+  [6, 6, 6, 7, 7],
+  [7, 8, 8, 8, 9],
+  [9, 10, 10, 10, 11],
+  [11, 11, 11, 12, 12],
+  [12, 12, 13, 13, 13],
+  [14, 14, 15, 15, 16],
 ];
 
 // sim calculations
 
-function returnRow() {
-  return Math.floor(Math.random() * 9);
-}
-
-function returnCol() {
-  return Math.floor(Math.random() * 4);
+function returnVal(num) {
+  return Math.floor(Math.random() * num);
 }
 
 function getShots() {
-  let shots = shotOptions[returnRow()][returnCol()];
+  let shots = statValues[returnVal(9)][returnVal(4)];
   return shots;
 }
 
 function getHits() {
-  let hits = hitOptions[returnRow()][returnCol()];
+  let hits = statValues[returnVal(7)][returnVal(4)];
   return hits;
 }
 
 function getGoals() {
-  let goals = goalOptions[returnRow()][returnCol()];
+  let goals = statValues[returnVal(2)][returnVal(4)];
   return goals;
 }
 
@@ -276,7 +246,6 @@ function displayThirdPeriod() {
 }
 
 function displayTotals() {
-
   homeShotsTotal.innerHTML = sum(homeShotsArr);
   awayShotsTotal.innerHTML = sum(awayShotsArr);
   homeHitsTotal.innerHTML = sum(homeHitsArr);
