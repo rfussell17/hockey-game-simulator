@@ -50,10 +50,8 @@ const btn = document.getElementById("btn");
 //create getCity, getTeam, getAbr, getLogo functions
 
 function sum(input) {
-  if (toString.call(input) !== "[object Array]") return false;
-
-  var total = 0;
-  for (var i = 0; i < input.length; i++) {
+  let total = 0;
+  for (let i = 0; i < input.length; i++) {
     if (isNaN(input[i])) {
       continue;
     }
@@ -172,40 +170,40 @@ function simulate() {
   setTimeout(displayTotals, 6000);
 }
 
-let table = [
-  homeP1Shots,
-  homeP1Hits,
-  homeP1Goals,
-  homeP2Shots,
-  homeP2Hits,
-  homeP2Goals,
-  homeP3Shots,
-  homeP3Hits,
-  homeP3Goals,
-  homeShotsTotal,
-  homeHitsTotal,
-  homeGoalsTotal,
-  awayP1Shots,
-  awayP1Hits,
-  awayP1Goals,
-  awayP2Shots,
-  awayP2Hits,
-  awayP2Goals,
-  awayP3Shots,
-  awayP3Hits,
-  awayP3Goals,
-  awayGoalsTotal,
-  awayShotsTotal,
-  awayHitsTotal,
-  awayGoalsTotal,
-];
+// let table = [
+//   homeP1Shots,
+//   homeP1Hits,
+//   homeP1Goals,
+//   homeP2Shots,
+//   homeP2Hits,
+//   homeP2Goals,
+//   homeP3Shots,
+//   homeP3Hits,
+//   homeP3Goals,
+//   homeShotsTotal,
+//   homeHitsTotal,
+//   homeGoalsTotal,
+//   awayP1Shots,
+//   awayP1Hits,
+//   awayP1Goals,
+//   awayP2Shots,
+//   awayP2Hits,
+//   awayP2Goals,
+//   awayP3Shots,
+//   awayP3Hits,
+//   awayP3Goals,
+//   awayGoalsTotal,
+//   awayShotsTotal,
+//   awayHitsTotal,
+//   awayGoalsTotal,
+// ];
 
-function clearData(table) {
-  let appendedTable = table.map((item) => {
-    return `${item}.innerHTML = 0;`;
-  });
-  return appendedTable;
-}
+// function clearData(table) {
+//   let appendedTable = table.map((item) => {
+//     return `${item}.innerHTML = 0;`;
+//   });
+//   return appendedTable;
+// }
 
 btn.addEventListener("click", () => {
   clearData(table);
