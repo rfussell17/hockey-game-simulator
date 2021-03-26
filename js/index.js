@@ -141,7 +141,6 @@ let HomeTeam = new Team(
   getHits(),
   getGoals()
 );
-
 homeStatHeader.innerHTML = HomeTeam.abrev;
 
 let AwayTeam = new Team(
@@ -153,26 +152,15 @@ let AwayTeam = new Team(
   getHits(),
   getGoals()
 );
-
 awayStatHeader.innerHTML = AwayTeam.abrev;
 
 //render period logic
 
 function renderFirstPeriod() {
-  // calc first period
-
   let homeP1ShotsValue = getShots();
-  homeShotsArr.push(homeP1ShotsValue);
-
   let awayP1ShotsValue = getShots();
-  awayShotsArr.push(awayP1ShotsValue);
-
   let homeP1HitsValue = getHits();
-  homeHitsArr.push(homeP1HitsValue);
-
   let awayP1HitsValue = getHits();
-  awayHitsArr.push(awayP1HitsValue);
-
   let homeP1GoalsValue = getGoals();
   let awayP1GoalsValue = getGoals();
 
@@ -193,6 +181,11 @@ function renderFirstPeriod() {
     awayGoalsArr.push(awayP1GoalsValue);
     awayP1Goals.innerHTML = awayP1GoalsValue;
   }
+
+  homeShotsArr.push(homeP1ShotsValue);
+  awayShotsArr.push(awayP1ShotsValue);
+  homeHitsArr.push(homeP1HitsValue);
+  awayHitsArr.push(awayP1HitsValue);
 
   //display stats
 
@@ -283,26 +276,14 @@ function displayThirdPeriod() {
 }
 
 function displayTotals() {
-  let homeShotsTotalValue = sum(homeShotsArr);
-  homeShotsTotal.innerHTML = homeShotsTotalValue;
 
-  let awayShotsTotalValue = sum(awayShotsArr);
-  awayShotsTotal.innerHTML = awayShotsTotalValue;
-
-  let homeHitsTotalValue = sum(homeHitsArr);
-  homeHitsTotal.innerHTML = homeHitsTotalValue;
-
-  let awayHitsTotalValue = sum(awayHitsArr);
-  awayHitsTotal.innerHTML = awayHitsTotalValue;
-
-  let homeGoalsTotalValue = sum(homeGoalsArr);
-  homeGoalsTotal.innerHTML = homeGoalsTotalValue;
-
-  let awayGoalsTotalValue = sum(awayGoalsArr);
-  awayGoalsTotal.innerHTML = awayGoalsTotalValue;
+  homeShotsTotal.innerHTML = sum(homeShotsArr);
+  awayShotsTotal.innerHTML = sum(awayShotsArr);
+  homeHitsTotal.innerHTML = sum(homeHitsArr);
+  awayHitsTotal.innerHTML = sum(awayHitsArr);
+  homeGoalsTotal.innerHTML = sum(homeGoalsArr);
+  awayGoalsTotal.innerHTML = sum(awayGoalsArr);
 }
-
-// simulation function
 
 function simulate() {
   setTimeout(renderFirstPeriod, 1000);
@@ -311,38 +292,42 @@ function simulate() {
   setTimeout(displayTotals, 6000);
 }
 
-function clearData() {
-  homeP1Shots.innerHTML = 0;
-  homeP1Hits.innerHTML = 0;
-  homeP1Goals.innerHTML = 0;
-  homeP2Shots.innerHTML = 0;
-  homeP2Hits.innerHTML = 0;
-  homeP2Goals.innerHTML = 0;
-  homeP3Shots.innerHTML = 0;
-  homeP3Hits.innerHTML = 0;
-  homeP3Goals.innerHTML = 0;
+let table = [
+  homeP1Shots,
+  homeP1Hits,
+  homeP1Goals,
+  homeP2Shots,
+  homeP2Hits,
+  homeP2Goals,
+  homeP3Shots,
+  homeP3Hits,
+  homeP3Goals,
+  homeShotsTotal,
+  homeHitsTotal,
+  homeGoalsTotal,
+  awayP1Shots,
+  awayP1Hits,
+  awayP1Goals,
+  awayP2Shots,
+  awayP2Hits,
+  awayP2Goals,
+  awayP3Shots,
+  awayP3Hits,
+  awayP3Goals,
+  awayGoalsTotal,
+  awayShotsTotal,
+  awayHitsTotal,
+  awayGoalsTotal,
+];
 
-  homeShotsTotal.innerHTML = 0;
-  homeHitsTotal.innerHTML = 0;
-  homeGoalsTotal.innerHTML = 0;
-
-  awayP1Shots.innerHTML = 0;
-  awayP1Hits.innerHTML = 0;
-  awayP1Goals.innerHTML = 0;
-  awayP2Shots.innerHTML = 0;
-  awayP2Hits.innerHTML = 0;
-  awayP2Goals.innerHTML = 0;
-  awayP3Shots.innerHTML = 0;
-  awayP3Hits.innerHTML = 0;
-  awayP3Goals.innerHTML = 0;
-  awayGoalsTotal.innerHTML = 0;
-
-  awayShotsTotal.innerHTML = 0;
-  awayHitsTotal.innerHTML = 0;
-  awayGoalsTotal.innerHTML = 0;
+function clearData(table) {
+  let appendedTable = table.map((item) => {
+    return `${item}.innerHTML = 0;`;
+  });
+  return appendedTable;
 }
 
 btn.addEventListener("click", () => {
-  clearData();
+  clearData(table);
   simulate();
 });
