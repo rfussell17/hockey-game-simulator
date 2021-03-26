@@ -9,7 +9,7 @@
 /* Header Styles */
 
 header {
-  padding: 3em 0;
+  padding: 1em 0 ;
 }
 
 header h1 {
@@ -84,7 +84,7 @@ td {
 
 th,
 td {
-  padding: 15px;
+  padding: 10px;
   text-align: left;
 }
 
