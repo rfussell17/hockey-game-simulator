@@ -9,7 +9,7 @@
 /* Header Styles */
 
 header {
-  padding: 1em 0 ;
+  padding: 1em 0;
 }
 
 header h1 {
@@ -36,7 +36,10 @@ h2 {
 }
 
 img {
-  width: 15%;
+  /* width: 15%; */
+  width:  100px;
+  height: 100px;
+  object-fit: cover;
   margin-left: 42%;
 }
 

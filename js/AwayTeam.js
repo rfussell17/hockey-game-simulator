@@ -2,7 +2,7 @@
 
 // export default class AwayTeam extends Team {
 //   constructor() {
-//     super(city, TeamName, abrev, logo, p1Shots, p2Shots, p3Shots, p1Hits, p2Hits, p3Hits, p1Goals, p2Goals, p3Goals);
+//     super(city, teamName, abrev, logo, p1Shots, p2Shots, p3Shots, p1Hits, p2Hits, p3Hits, p1Goals, p2Goals, p3Goals);
 //   }
 //   returnVal(num) {
 //     return Math.floor(Math.random() * num);

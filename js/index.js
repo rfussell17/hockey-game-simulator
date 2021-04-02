@@ -1,7 +1,5 @@
-// import HomeTeam from "./HomeTeam.js";
-// import AwayTeam from "./AwayTeam.js";
-
-import Team from "./Team.js";
+import HomeTeam from "./Team.js";
+import AwayTeam from "./Team.js";
 
 //variables
 
@@ -47,7 +45,51 @@ const homeStatHeader = document.getElementById("home-stat-header");
 const awayStatHeader = document.getElementById("away-stat-header");
 const btn = document.getElementById("btn");
 
-//create getCity, getTeam, getAbr, getLogo functions
+let Home = new HomeTeam(
+  HomeTeam.getTeamCity(),
+  "Canucks",
+  "VAN",
+  "https://content.sportslogos.net/logos/1/29/full/2084_vancouver_canucks-primary-2020.png",
+  HomeTeam.getShots(),
+  HomeTeam.getHits(),
+  HomeTeam.getGoals(),
+  HomeTeam.getShots(),
+  HomeTeam.getHits(),
+  HomeTeam.getGoals(),
+  HomeTeam.getShots(),
+  HomeTeam.getHits(),
+  HomeTeam.getGoals()
+);
+
+console.log(Home.city)
+
+let Away = new AwayTeam(
+  "Buffalo",
+  "Sabres",
+  "BUF",
+  "https://content.sportslogos.net/logos/1/29/full/2084_vancouver_canucks-primary-2020.png",
+  AwayTeam.getShots(),
+  AwayTeam.getHits(),
+  AwayTeam.getGoals(),
+  AwayTeam.getShots(),
+  AwayTeam.getHits(),
+  AwayTeam.getGoals(),
+  AwayTeam.getShots(),
+  AwayTeam.getHits(),
+  AwayTeam.getGoals()
+);
+
+homeStatHeader.innerHTML = Home.abrev;
+awayStatHeader.innerHTML = Away.abrev;
+
+let homeShotsArr = [];
+let awayShotsArr = [];
+
+let homeHitsArr = [];
+let awayHitsArr = [];
+
+let homeGoalsArr = [];
+let awayGoalsArr = [];
 
 function sum(input) {
   let total = 0;
@@ -60,51 +102,7 @@ function sum(input) {
   return total;
 }
 
-let homeShotsArr = [];
-let awayShotsArr = [];
-
-let homeHitsArr = [];
-let awayHitsArr = [];
-
-let homeGoalsArr = [];
-let awayGoalsArr = [];
-
-let Home = new Team(
-  "Vancouver",
-  "Canucks",
-  "VAN",
-  "https://content.sportslogos.net/logos/1/29/full/2084_vancouver_canucks-primary-2020.png",
-  Team.getShots(),
-  Team.getHits(),
-  Team.getGoals(),
-  Team.getShots(),
-  Team.getHits(),
-  Team.getGoals(),
-  Team.getShots(),
-  Team.getHits(),
-  Team.getGoals()
-);
-
-homeStatHeader.innerHTML = Home.abrev;
-
-let Away = new Team(
-  "Buffalo",
-  "Sabres",
-  "BUF",
-  "https://content.sportslogos.net/logos/1/29/full/2084_vancouver_canucks-primary-2020.png",
-  Team.getShots(),
-  Team.getHits(),
-  Team.getGoals(),
-  Team.getShots(),
-  Team.getHits(),
-  Team.getGoals(),
-  Team.getShots(),
-  Team.getHits(),
-  Team.getGoals()
-);
-awayStatHeader.innerHTML = Away.abrev;
-
-//render period logic
+//display period logic
 
 function displayFirstPeriod() {
   homeP1Shots.innerHTML = Home.p1Shots;
@@ -114,7 +112,7 @@ function displayFirstPeriod() {
   homeP1Goals.innerHTML = Home.p1Goals;
   awayP1Goals.innerHTML = Away.p1Goals;
 
-  homeShotsArr.push(Home.p1Shots);
+  homeShotsArr.push(Home.p1Shots)
   awayShotsArr.push(Away.p1Shots);
   homeHitsArr.push(Home.p1Hits);
   awayHitsArr.push(Away.p1Hits);
@@ -163,49 +161,97 @@ function displayTotals() {
   awayGoalsTotal.innerHTML = sum(awayGoalsArr);
 }
 
+function clearData() {
+
+  homeP1Shots.innerHTML = "",
+  homeP1Hits.innerHTML = "",
+  homeP1Goals.innerHTML = "",
+  homeP2Shots.innerHTML = "",
+  homeP2Hits.innerHTML = "",
+  homeP2Goals.innerHTML = "",
+  homeP3Shots.innerHTML = "",
+  homeP3Hits.innerHTML = "",
+  homeP3Goals.innerHTML = "",
+  homeShotsTotal.innerHTML = "",
+  homeHitsTotal.innerHTML = "",
+  homeGoalsTotal.innerHTML = "",
+  awayP1Shots.innerHTML = "",
+  awayP1Hits.innerHTML = "",
+  awayP1Goals.innerHTML = "",
+  awayP2Shots.innerHTML = "",
+  awayP2Hits.innerHTML = "",
+  awayP2Goals.innerHTML = "",
+  awayP3Shots.innerHTML = "",
+  awayP3Hits.innerHTML = "",
+  awayP3Goals.innerHTML = "",
+  awayGoalsTotal.innerHTML = "",
+  awayShotsTotal.innerHTML = "",
+  awayHitsTotal.innerHTML = "",
+  awayGoalsTotal.innerHTML = ""
+
+  homeShotsArr = [];
+  awayShotsArr = [];
+
+  homeHitsArr = [];
+  awayHitsArr = [];
+  
+  homeGoalsArr = [];
+  awayGoalsArr = [];
+
+  setTimeout(function (){
+    btn.innerHTML = "SIM GAME";
+  }, 8000)
+}
+
+function refreshTeamObjs(){
+
+  clearData()
+
+  let refreshedTeams = [  
+    
+    Away = new AwayTeam(
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    AwayTeam.getShots(),
+    AwayTeam.getHits(),
+    AwayTeam.getGoals(),
+    AwayTeam.getShots(),
+    AwayTeam.getHits(),
+    AwayTeam.getGoals(),
+    AwayTeam.getShots(),
+    AwayTeam.getHits(),
+    AwayTeam.getGoals(),
+  ),
+
+  Home = new HomeTeam(
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    HomeTeam.getShots(),
+    HomeTeam.getHits(),
+    HomeTeam.getGoals(),
+    HomeTeam.getShots(),
+    HomeTeam.getHits(),
+    HomeTeam.getGoals(),
+    HomeTeam.getShots(),
+    HomeTeam.getHits(),
+    HomeTeam.getGoals(),
+  )]
+  return refreshedTeams;
+}
+
 function simulate() {
+  refreshTeamObjs();
+  btn.innerHTML = "Simulating..."
   setTimeout(displayFirstPeriod, 1000);
   setTimeout(displaySecondPeriod, 3000);
   setTimeout(displayThirdPeriod, 5000);
   setTimeout(displayTotals, 6000);
 }
 
-// let table = [
-//   homeP1Shots,
-//   homeP1Hits,
-//   homeP1Goals,
-//   homeP2Shots,
-//   homeP2Hits,
-//   homeP2Goals,
-//   homeP3Shots,
-//   homeP3Hits,
-//   homeP3Goals,
-//   homeShotsTotal,
-//   homeHitsTotal,
-//   homeGoalsTotal,
-//   awayP1Shots,
-//   awayP1Hits,
-//   awayP1Goals,
-//   awayP2Shots,
-//   awayP2Hits,
-//   awayP2Goals,
-//   awayP3Shots,
-//   awayP3Hits,
-//   awayP3Goals,
-//   awayGoalsTotal,
-//   awayShotsTotal,
-//   awayHitsTotal,
-//   awayGoalsTotal,
-// ];
-
-// function clearData(table) {
-//   let appendedTable = table.map((item) => {
-//     return `${item}.innerHTML = 0;`;
-//   });
-//   return appendedTable;
-// }
-
 btn.addEventListener("click", () => {
-  clearData(table);
   simulate();
 });
