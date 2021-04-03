@@ -46,10 +46,10 @@ const awayStatHeader = document.getElementById("away-stat-header");
 const btn = document.getElementById("btn");
 
 let Home = new HomeTeam(
-  HomeTeam.getTeamCity(),
+  "Vancouver",
   "Canucks",
   "VAN",
-  "https://content.sportslogos.net/logos/1/29/full/2084_vancouver_canucks-primary-2020.png",
+  "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
   HomeTeam.getShots(),
   HomeTeam.getHits(),
   HomeTeam.getGoals(),
@@ -60,8 +60,6 @@ let Home = new HomeTeam(
   HomeTeam.getHits(),
   HomeTeam.getGoals()
 );
-
-console.log(Home.city)
 
 let Away = new AwayTeam(
   "Buffalo",
@@ -199,7 +197,7 @@ function clearData() {
   awayGoalsArr = [];
 
   setTimeout(function (){
-    btn.innerHTML = "SIM GAME";
+    btn.innerHTML = "New Matchup";
   }, 8000)
 }
 
@@ -208,7 +206,7 @@ function refreshTeamObjs(){
   clearData()
 
   let refreshedTeams = [  
-    
+
     Away = new AwayTeam(
     undefined,
     undefined,
