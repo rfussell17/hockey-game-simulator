@@ -110,7 +110,7 @@ function displayFirstPeriod() {
   homeP1Goals.innerHTML = Home.p1Goals;
   awayP1Goals.innerHTML = Away.p1Goals;
 
-  homeShotsArr.push(Home.p1Shots)
+  homeShotsArr.push(Home.p1Shots);
   awayShotsArr.push(Away.p1Shots);
   homeHitsArr.push(Home.p1Hits);
   awayHitsArr.push(Away.p1Hits);
@@ -160,90 +160,88 @@ function displayTotals() {
 }
 
 function clearData() {
-
-  homeP1Shots.innerHTML = "",
-  homeP1Hits.innerHTML = "",
-  homeP1Goals.innerHTML = "",
-  homeP2Shots.innerHTML = "",
-  homeP2Hits.innerHTML = "",
-  homeP2Goals.innerHTML = "",
-  homeP3Shots.innerHTML = "",
-  homeP3Hits.innerHTML = "",
-  homeP3Goals.innerHTML = "",
-  homeShotsTotal.innerHTML = "",
-  homeHitsTotal.innerHTML = "",
-  homeGoalsTotal.innerHTML = "",
-  awayP1Shots.innerHTML = "",
-  awayP1Hits.innerHTML = "",
-  awayP1Goals.innerHTML = "",
-  awayP2Shots.innerHTML = "",
-  awayP2Hits.innerHTML = "",
-  awayP2Goals.innerHTML = "",
-  awayP3Shots.innerHTML = "",
-  awayP3Hits.innerHTML = "",
-  awayP3Goals.innerHTML = "",
-  awayGoalsTotal.innerHTML = "",
-  awayShotsTotal.innerHTML = "",
-  awayHitsTotal.innerHTML = "",
-  awayGoalsTotal.innerHTML = ""
+  (homeP1Shots.innerHTML = ""),
+    (homeP1Hits.innerHTML = ""),
+    (homeP1Goals.innerHTML = ""),
+    (homeP2Shots.innerHTML = ""),
+    (homeP2Hits.innerHTML = ""),
+    (homeP2Goals.innerHTML = ""),
+    (homeP3Shots.innerHTML = ""),
+    (homeP3Hits.innerHTML = ""),
+    (homeP3Goals.innerHTML = ""),
+    (homeShotsTotal.innerHTML = ""),
+    (homeHitsTotal.innerHTML = ""),
+    (homeGoalsTotal.innerHTML = ""),
+    (awayP1Shots.innerHTML = ""),
+    (awayP1Hits.innerHTML = ""),
+    (awayP1Goals.innerHTML = ""),
+    (awayP2Shots.innerHTML = ""),
+    (awayP2Hits.innerHTML = ""),
+    (awayP2Goals.innerHTML = ""),
+    (awayP3Shots.innerHTML = ""),
+    (awayP3Hits.innerHTML = ""),
+    (awayP3Goals.innerHTML = ""),
+    (awayGoalsTotal.innerHTML = ""),
+    (awayShotsTotal.innerHTML = ""),
+    (awayHitsTotal.innerHTML = ""),
+    (awayGoalsTotal.innerHTML = "");
 
   homeShotsArr = [];
   awayShotsArr = [];
 
   homeHitsArr = [];
   awayHitsArr = [];
-  
+
   homeGoalsArr = [];
   awayGoalsArr = [];
 
-  setTimeout(function (){
+  setTimeout(function () {
     btn.innerHTML = "New Matchup";
-  }, 8000)
+  }, 8000);
 }
 
-function refreshTeamObjs(){
+function refreshTeamObjs() {
+  clearData();
 
-  clearData()
+  let refreshedTeams = [
+    (Away = new AwayTeam(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      AwayTeam.getShots(),
+      AwayTeam.getHits(),
+      AwayTeam.getGoals(),
+      AwayTeam.getShots(),
+      AwayTeam.getHits(),
+      AwayTeam.getGoals(),
+      AwayTeam.getShots(),
+      AwayTeam.getHits(),
+      AwayTeam.getGoals()
+    )),
 
-  let refreshedTeams = [  
-
-    Away = new AwayTeam(
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    AwayTeam.getShots(),
-    AwayTeam.getHits(),
-    AwayTeam.getGoals(),
-    AwayTeam.getShots(),
-    AwayTeam.getHits(),
-    AwayTeam.getGoals(),
-    AwayTeam.getShots(),
-    AwayTeam.getHits(),
-    AwayTeam.getGoals(),
-  ),
-
-  Home = new HomeTeam(
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    HomeTeam.getShots(),
-    HomeTeam.getHits(),
-    HomeTeam.getGoals(),
-    HomeTeam.getShots(),
-    HomeTeam.getHits(),
-    HomeTeam.getGoals(),
-    HomeTeam.getShots(),
-    HomeTeam.getHits(),
-    HomeTeam.getGoals(),
-  )]
+    (Home = new HomeTeam(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      HomeTeam.getShots(),
+      HomeTeam.getHits(),
+      HomeTeam.getGoals(),
+      HomeTeam.getShots(),
+      HomeTeam.getHits(),
+      HomeTeam.getGoals(),
+      HomeTeam.getShots(),
+      HomeTeam.getHits(),
+      HomeTeam.getGoals()
+    )),
+  ];
   return refreshedTeams;
 }
 
 function simulate() {
   refreshTeamObjs();
-  btn.innerHTML = "Simulating..."
+  btn.innerHTML = "Simulating...";
   setTimeout(displayFirstPeriod, 1000);
   setTimeout(displaySecondPeriod, 3000);
   setTimeout(displayThirdPeriod, 5000);
